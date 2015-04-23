@@ -1,0 +1,7 @@
+.idea
+*.so
+*.cmake
+Makefile
+CMakeCache.txt
+CMakeFiles
+nibbler
