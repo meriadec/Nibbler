@@ -9,7 +9,7 @@ set(SOURCE_FILES srcs/Sdl.cpp)
 find_package(SDL REQUIRED)
 
 include_directories(inc)
-include_directories(${SDL2_INCLUDE_DIRS})
+include_directories(${SDL_INCLUDE_DIR})
 
 add_library(${EXECUTABLE_NAME} MODULE ${SOURCE_FILES})
-target_link_libraries(${EXECUTABLE_NAME} ${SDL2_LIBRARIES})
+target_link_libraries(${EXECUTABLE_NAME} ${SDL_LIBRARY})

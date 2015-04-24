@@ -1,7 +1,7 @@
 #ifndef NIBBLER_SDL_H
 #define NIBBLER_SDL_H
 
-# include <Sdl.h>
+# include <SDL2/SDL.h>
 
 class Sdl {
 

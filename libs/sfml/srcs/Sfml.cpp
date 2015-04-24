@@ -15,6 +15,7 @@ Sfml::Sfml (Sfml const & ref)
 
 Sfml & Sfml::operator= (Sfml const & ref)
 {
+    static_cast<void>(ref);
     return *this;
 }
 

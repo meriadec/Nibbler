@@ -15,6 +15,7 @@ Sdl::Sdl (Sdl const & ref)
 
 Sdl & Sdl::operator= (Sdl const & ref)
 {
+    static_cast<void>(ref);
     return *this;
 }
 
@@ -25,12 +26,12 @@ void Sdl::start (void)
                             _w, _h, SDL_WINDOW_OPENGL);
 
     if (_win == NULL) {
-        throw ();
+        throw ("No window");
     }
 }
 
 void Sdl::end (void)
 {
-    SDL_DestroyWindow(_w);
+    SDL_DestroyWindow(_win);
     SDL_Quit();
 }
