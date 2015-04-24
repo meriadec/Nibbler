@@ -24,6 +24,7 @@ public:
   ~GeorgeRRMartin (void);
 
   void setGraphic (std::string lib);
+  IGraphic * getGraphic (void);
 
 
 private:

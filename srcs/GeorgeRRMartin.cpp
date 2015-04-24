@@ -26,3 +26,7 @@ void GeorgeRRMartin::setGraphic (std::string lib) {
 
   _g = graphic(1000, 1000);
 }
+
+IGraphic *GeorgeRRMartin::getGraphic (void) {
+  return _g;
+}
