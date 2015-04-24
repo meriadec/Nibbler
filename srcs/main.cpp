@@ -8,7 +8,7 @@ int main (void)
     void * handle;
     IGraphic *(*graphic)(int, int);
 
-    handle = dlopen("libs/sdl/libsdl.so", RTLD_LOCAL);
+    handle = dlopen("./libs/sfml/libsfml.so", RTLD_LOCAL);
     if (!handle) {
         std::cout << "Handle error." << std::endl;
         return (-1);
@@ -19,8 +19,15 @@ int main (void)
         std::cout << "Cannot link graphic." << std::endl;
     }
 
-    IGraphic * g = graphic(100, 100);
+    IGraphic * g = graphic(1000, 1000);
+
     g->start();
+
+    while (1) {
+
+    }
+
+    g->end();
 
     dlclose(handle);
 

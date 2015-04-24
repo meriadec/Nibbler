@@ -16,8 +16,10 @@ class Sfml: public IGraphic {
         const int & getWidth (void) const;
         const int & getHeight (void) const;
 
-        void start  (void);
-        void end    (void);
+        void start      (void);
+        void end        (void);
+        void clear      (void);
+        void endDraw    (void);
 
     private:
 

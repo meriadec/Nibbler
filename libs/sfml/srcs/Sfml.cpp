@@ -41,6 +41,16 @@ void Sfml::end (void)
     }
 }
 
+void Sfml::clear (void)
+{
+    _win->clear();
+}
+
+void Sfml::endDraw (void)
+{
+    _win->display();
+}
+
 extern "C" IGraphic * create (int w, int h)
 {
     return new Sfml(w, h);

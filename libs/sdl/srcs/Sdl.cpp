@@ -38,12 +38,24 @@ void Sdl::start (void)
     if (_win == NULL) {
         throw ("No window");
     }
+
+    _renderer = SDL_CreateRenderer(_win, -1, 0);
 }
 
 void Sdl::end (void)
 {
     SDL_DestroyWindow(_win);
     SDL_Quit();
+}
+
+void Sdl::clear (void)
+{
+    SDL_RenderClear(_renderer);
+}
+
+void Sdl::endDraw (void)
+{
+    SDL_RenderPresent(_renderer);
 }
 
 extern "C" IGraphic * create (int w, int h)
