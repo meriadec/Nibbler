@@ -12,6 +12,9 @@ class Sdl {
         Sdl (Sdl const & ref);
         Sdl & operator= (Sdl const & ref);
 
+        const int & getWidth (void) const;
+        const int & getHeight (void) const;
+
         void start  (void);
         void end    (void);
 

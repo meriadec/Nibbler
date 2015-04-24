@@ -12,6 +12,9 @@ class Sfml {
         Sfml (Sfml const & ref);
         Sfml & operator= (Sfml const & ref);
 
+        const int & getWidth (void) const;
+        const int & getHeight (void) const;
+
         void start  (void);
         void end    (void);
 

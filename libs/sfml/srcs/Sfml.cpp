@@ -19,6 +19,16 @@ Sfml & Sfml::operator= (Sfml const & ref)
     return *this;
 }
 
+const int & Sfml::getHeight (void) const
+{
+    return _h;
+}
+
+const int & Sfml::getWidth (void) const
+{
+    return _w;
+}
+
 void Sfml::start (void)
 {
     _win = new sf::RenderWindow(sf::VideoMode(_w, _h), "Nibbler");

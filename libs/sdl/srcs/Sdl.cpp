@@ -19,6 +19,16 @@ Sdl & Sdl::operator= (Sdl const & ref)
     return *this;
 }
 
+const int & Sdl::getHeight (void) const
+{
+    return _h;
+}
+
+const int & Sdl::getWidth (void) const
+{
+    return _w;
+}
+
 void Sdl::start (void)
 {
     SDL_Init(SDL_INIT_VIDEO);
