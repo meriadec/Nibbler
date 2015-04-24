@@ -2,6 +2,12 @@
 
 Sdl::Sdl (int w, int h): _w(w), _h(h)
 {
+    _keyMap = {
+        { SDLK_LEFT, eKeys::KEYLEFT },
+        { SDLK_RIGHT, eKeys::KEYRIGHT },
+        { SDLK_UP, eKeys::KEYUP },
+        { SDLK_DOWN, eKeys::KEYDOWN }
+    };
 }
 
 Sdl::~Sdl (void)
@@ -56,6 +62,24 @@ void Sdl::clear (void)
 void Sdl::endDraw (void)
 {
     SDL_RenderPresent(_renderer);
+}
+
+eKeys Sdl::getInput (void) {
+
+    SDL_Event event;
+
+    while (SDL_PollEvent(&event)) {
+        if (event.type == SDL_QUIT) {
+            return eKeys::ESCAPE;
+        } else if (event.type == SDL_KEYDOWN) {
+            if (_keyMap.find(event.key.keysym.sym) != _keyMap.end()) {
+                return _keyMap[event.key.keysym.sym];
+            } else {
+                return eKeys::NOTHING;
+            }
+        }
+    }
+    return eKeys::NOTHING;
 }
 
 extern "C" IGraphic * create (int w, int h)

@@ -3,6 +3,7 @@
 
 # include <IGraphic.hpp>
 # include <SDL2/SDL.h>
+# include <map>
 
 class Sdl: public IGraphic {
 
@@ -20,6 +21,7 @@ class Sdl: public IGraphic {
         void end        (void);
         void clear      (void);
         void endDraw    (void);
+        eKeys getInput  (void);
 
     private:
 
@@ -27,6 +29,8 @@ class Sdl: public IGraphic {
         int             _h;
         SDL_Window *    _win;
         SDL_Renderer *  _renderer;
+
+        std::map<int, eKeys>  _keyMap;
 };
 
 #endif

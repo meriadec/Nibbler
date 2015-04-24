@@ -3,6 +3,15 @@
 
 # include "nibbler.hpp"
 
+enum eKeys {
+    NOTHING = 1,
+    ESCAPE,
+    KEYUP,
+    KEYDOWN,
+    KEYLEFT,
+    KEYRIGHT
+};
+
 class IGraphic {
 
     public:
@@ -13,6 +22,7 @@ class IGraphic {
         virtual void end        (void) = 0;
         virtual void clear      (void) = 0;
         virtual void endDraw    (void) = 0;
+        virtual eKeys getInput  (void) = 0;
 
         virtual const int & getWidth (void) const = 0;
         virtual const int & getHeight (void) const = 0;
