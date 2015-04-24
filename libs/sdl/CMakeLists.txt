@@ -6,7 +6,7 @@ set(SDL_LIBRARY $ENV{HOME}/.brew/lib/libSDL2.dylib)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wextra -pedantic -std=c++11")
 set(SOURCE_FILES srcs/Sdl.cpp)
 
-find_package(SDL REQUIRED)
+find_package(SDL REQUIRED sdl2)
 
 include_directories(inc)
 include_directories(${SDL_INCLUDE_DIR})
