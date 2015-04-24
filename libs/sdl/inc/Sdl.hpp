@@ -1,9 +1,10 @@
 #ifndef NIBBLER_SDL_H
 #define NIBBLER_SDL_H
 
+# include <IGraphic.hpp>
 # include <SDL2/SDL.h>
 
-class Sdl {
+class Sdl: public IGraphic {
 
     public:
 

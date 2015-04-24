@@ -1,4 +1,4 @@
-#include "Sfml.h"
+#include "Sfml.hpp"
 
 Sfml::Sfml (int w, int h): _w(w), _h(h)
 {
@@ -39,4 +39,14 @@ void Sfml::end (void)
     if (_win->isOpen()) {
         _win->close();
     }
+}
+
+extern "C" IGraphic * create (int w, int h)
+{
+    return new Sfml(w, h);
+}
+
+extern "C" void destroy (IGraphic * p)
+{
+    delete p;
 }

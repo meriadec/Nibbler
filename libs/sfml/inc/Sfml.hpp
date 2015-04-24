@@ -1,9 +1,10 @@
 #ifndef NIBBLER_SFML_H
 #define NIBBLER_SFML_H
 
+# include <IGraphic.hpp>
 # include <SFML/Graphics.hpp>
 
-class Sfml {
+class Sfml: public IGraphic {
 
     public:
 

@@ -1,4 +1,4 @@
-#include "Sdl.h"
+#include "Sdl.hpp"
 
 Sdl::Sdl (int w, int h): _w(w), _h(h)
 {
@@ -44,4 +44,14 @@ void Sdl::end (void)
 {
     SDL_DestroyWindow(_win);
     SDL_Quit();
+}
+
+extern "C" IGraphic * create (int w, int h)
+{
+    return new Sdl(w, h);
+}
+
+extern "C" void destroy (IGraphic * p)
+{
+    delete p;
 }
