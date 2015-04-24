@@ -1,7 +1,2 @@
-.idea
-*.so
-*.cmake
-Makefile
-CMakeCache.txt
-CMakeFiles
-nibbler
+.idea/
+build/
