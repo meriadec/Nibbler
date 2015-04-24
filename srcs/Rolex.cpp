@@ -11,5 +11,5 @@ Rolex::~Rolex (void) {
 int Rolex::tick (void) {
   struct timeval stop;
   gettimeofday(&stop, NULL);
-  return (stop.tv_usec - _start.tv_usec);
+  return static_cast<int>(time(NULL) * 1000 + ((stop.tv_usec - _start.tv_usec) / 1000));
 }
