@@ -8,6 +8,7 @@ set(EXECUTABLE_NAME nibbler)
 set(SOURCE_FILES
   srcs/main.cpp
   srcs/Rolex.cpp
+  srcs/GeorgeRRMartin.cpp
 )
 
 include_directories(inc)
