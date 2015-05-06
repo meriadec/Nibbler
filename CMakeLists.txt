@@ -9,6 +9,8 @@ set(SOURCE_FILES
   srcs/main.cpp
   srcs/Rolex.cpp
   srcs/GeorgeRRMartin.cpp
+  srcs/Kasparov.cpp
+  srcs/Hiddleston.cpp
 )
 
 include_directories(inc)

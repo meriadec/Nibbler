@@ -3,10 +3,10 @@
 Sfml::Sfml (int w, int h): _w(w), _h(h)
 {
     _keyMap = {
-            { sf::Keyboard::Left, eKeys::KEYLEFT },
-            { sf::Keyboard::Right, eKeys::KEYRIGHT },
-            { sf::Keyboard::Up, eKeys::KEYUP },
-            { sf::Keyboard::Down, eKeys::KEYDOWN }
+            { sf::Keyboard::Left, eKeys::KEYLEFT1 },
+            { sf::Keyboard::Right, eKeys::KEYRIGHT1 },
+            { sf::Keyboard::A, eKeys::KEYLEFT2 },
+            { sf::Keyboard::O, eKeys::KEYRIGHT2 }
     };
 
     _colorMap = {

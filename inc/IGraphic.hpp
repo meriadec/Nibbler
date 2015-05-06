@@ -4,7 +4,7 @@
 # include "nibbler.hpp"
 
 enum eKeys {
-    NOTHING = 1, ESCAPE, KEYUP, KEYDOWN, KEYLEFT, KEYRIGHT
+    NOTHING = 1, ESCAPE, KEYLEFT1, KEYRIGHT1, KEYLEFT2, KEYRIGHT2
 };
 
 enum eColor {

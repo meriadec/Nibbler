@@ -3,10 +3,10 @@
 Sdl::Sdl (int w, int h): _w(w), _h(h)
 {
     _keyMap = {
-        { SDLK_LEFT, eKeys::KEYLEFT },
-        { SDLK_RIGHT, eKeys::KEYRIGHT },
-        { SDLK_UP, eKeys::KEYUP },
-        { SDLK_DOWN, eKeys::KEYDOWN }
+        { SDLK_LEFT, eKeys::KEYLEFT1 },
+        { SDLK_RIGHT, eKeys::KEYRIGHT1 },
+        { SDLK_a, eKeys::KEYLEFT2 },
+        { SDLK_o, eKeys::KEYRIGHT2 }
     };
 
     _colorMap = {
