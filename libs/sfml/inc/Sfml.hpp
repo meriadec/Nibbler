@@ -3,6 +3,7 @@
 
 # include <IGraphic.hpp>
 # include <SFML/Graphics.hpp>
+# include <SFML/Window.hpp>
 # include <map>
 
 class Sfml: public IGraphic {
@@ -23,13 +24,16 @@ class Sfml: public IGraphic {
         void endDraw    (void);
         eKeys getInput  (void);
 
+        void drawRect (int x, int y, eColor color);
+
     private:
 
         int                 _w;
         int                 _h;
         sf::RenderWindow *  _win;
 
-        std::map<int, eKeys>  _keyMap;
+        std::map<int, eKeys>     _keyMap;
+        std::map<eColor, sf::Color> _colorMap;
 
 };
 

@@ -8,6 +8,18 @@ Sfml::Sfml (int w, int h): _w(w), _h(h)
             { sf::Keyboard::Up, eKeys::KEYUP },
             { sf::Keyboard::Down, eKeys::KEYDOWN }
     };
+
+    _colorMap = {
+            { eColor::WHITE, sf::Color(253, 246, 227) },
+            { eColor::BLACK, sf::Color(0, 43, 54) },
+            { eColor::RED, sf::Color(220, 50, 47) },
+            { eColor::BLUE, sf::Color(38, 139, 210) },
+            { eColor::CYAN, sf::Color(42, 161, 152) },
+            { eColor::GREEN, sf::Color(133, 153, 0) },
+            { eColor::ORANGE, sf::Color(203, 75, 22) },
+            { eColor::YELLOW , sf::Color(181, 137, 0) },
+            { eColor::VIOLET, sf::Color(108, 113, 196) }
+    };
 }
 
 Sfml::~Sfml (void)
@@ -49,7 +61,7 @@ void Sfml::end (void)
 
 void Sfml::clear (void)
 {
-    _win->clear();
+    _win->clear(_colorMap[eColor::BLACK]);
 }
 
 void Sfml::endDraw (void)
@@ -73,6 +85,19 @@ eKeys Sfml::getInput (void)
         }
     }
     return eKeys::NOTHING;
+}
+
+void Sfml::drawRect (int x, int y, eColor color)
+{
+    sf::RectangleShape rect(sf::Vector2f(10, 10));
+
+    rect.setPosition(x, y);
+
+    rect.setFillColor(_colorMap[color]);
+
+    if (_win->isOpen()) {
+        _win->draw(rect);
+    }
 }
 
 extern "C" IGraphic * create (int w, int h)

@@ -8,6 +8,18 @@ Sdl::Sdl (int w, int h): _w(w), _h(h)
         { SDLK_UP, eKeys::KEYUP },
         { SDLK_DOWN, eKeys::KEYDOWN }
     };
+
+    _colorMap = {
+            { eColor::WHITE, { 253, 246, 227 } },
+            { eColor::BLACK, { 0, 43, 54 } },
+            { eColor::RED, { 220, 50, 47 } },
+            { eColor::BLUE, { 38, 139, 210 } },
+            { eColor::CYAN, { 42, 161, 152 } },
+            { eColor::GREEN, { 133, 153, 0 } },
+            { eColor::ORANGE, { 203, 75, 22 } },
+            { eColor::YELLOW , { 181, 137, 0 } },
+            { eColor::VIOLET, { 108, 113, 196 } }
+    };
 }
 
 Sdl::~Sdl (void)
@@ -56,6 +68,7 @@ void Sdl::end (void)
 
 void Sdl::clear (void)
 {
+    SDL_SetRenderDrawColor(_renderer, _colorMap[eColor::BLACK][0], _colorMap[eColor::BLACK][1], _colorMap[eColor::BLACK][2], 255);
     SDL_RenderClear(_renderer);
 }
 
@@ -81,6 +94,13 @@ eKeys Sdl::getInput (void) {
     }
     return eKeys::NOTHING;
 }
+
+void Sdl::drawRect (int x, int y, eColor color)
+{
+    SDL_Rect rect = { x, y, 10, 10 };
+    SDL_SetRenderDrawColor(_renderer, _colorMap[color][0], _colorMap[color][1], _colorMap[color][2], 255);
+    SDL_RenderFillRect(_renderer, &rect);
+};
 
 extern "C" IGraphic * create (int w, int h)
 {

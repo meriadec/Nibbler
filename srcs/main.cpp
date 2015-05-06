@@ -9,7 +9,7 @@ int main (void)
     Rolex           rol;
     IGraphic *      g;
 
-    got.setGraphic("sdl");
+    got.setGraphic("sfml");
     g = got.getGraphic();
 
     g->start();
@@ -20,7 +20,11 @@ int main (void)
     while (g->getInput() != eKeys::ESCAPE) {
 
         if (rol.tick() - now > 1000 / speed) {
+            g->clear();
             now = rol.tick();
+            g->drawRect(0, 0, eColor::GREEN);
+
+            g->endDraw();
             std::cout << "updating draw and positions" << std::endl;
         }
 

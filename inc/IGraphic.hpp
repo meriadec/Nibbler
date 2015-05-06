@@ -4,12 +4,11 @@
 # include "nibbler.hpp"
 
 enum eKeys {
-    NOTHING = 1,
-    ESCAPE,
-    KEYUP,
-    KEYDOWN,
-    KEYLEFT,
-    KEYRIGHT
+    NOTHING = 1, ESCAPE, KEYUP, KEYDOWN, KEYLEFT, KEYRIGHT
+};
+
+enum eColor {
+    WHITE = 1, BLACK, RED, BLUE, CYAN, GREEN, ORANGE, YELLOW, VIOLET
 };
 
 class IGraphic {
@@ -23,6 +22,8 @@ class IGraphic {
         virtual void clear      (void) = 0;
         virtual void endDraw    (void) = 0;
         virtual eKeys getInput  (void) = 0;
+
+        virtual void drawRect (int x, int y, eColor color) = 0;
 
         virtual const int & getWidth (void) const = 0;
         virtual const int & getHeight (void) const = 0;

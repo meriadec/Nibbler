@@ -4,6 +4,7 @@
 # include <IGraphic.hpp>
 # include <SDL2/SDL.h>
 # include <map>
+# include <vector>
 
 class Sdl: public IGraphic {
 
@@ -23,6 +24,8 @@ class Sdl: public IGraphic {
         void endDraw    (void);
         eKeys getInput  (void);
 
+        void drawRect (int x, int y, eColor color);
+
     private:
 
         int             _w;
@@ -30,7 +33,8 @@ class Sdl: public IGraphic {
         SDL_Window *    _win;
         SDL_Renderer *  _renderer;
 
-        std::map<int, eKeys>  _keyMap;
+        std::map<int, eKeys>                _keyMap;
+        std::map<eColor, std::vector<int> > _colorMap;
 };
 
 #endif
