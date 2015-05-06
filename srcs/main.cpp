@@ -1,5 +1,5 @@
-#include "nibbler.hpp"
-#include "IGraphic.hpp"
+#include <nibbler.hpp>
+#include <IGraphic.hpp>
 #include <Rolex.hpp>
 #include <GeorgeRRMartin.hpp>
 #include <Kasparov.hpp>
@@ -26,14 +26,26 @@ int main (int ac, char ** av)
 
     while ((key = g->getInput()) != eKeys::ESCAPE) {
 
-        for (std::list<Hiddleston *>::const_iterator it = players.begin(); it != players.end(); ++it) {
+        for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
             (*it)->digest(key);
         }
 
         if (rol.tick() - now > 1000 / speed) {
             g->clear();
             now = rol.tick();
-            g->drawRect(0, 0, eColor::GREEN);
+
+
+            for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
+
+                std::list< std::pair<int, int> > blocks = (*it)->getBlocks();
+                std::list<std::pair<int, int> >::iterator i = blocks.begin();
+
+                for (; i != blocks.end(); ++i) {
+                    g->drawRect((*i).first, (*i).second, eColor::BLUE);
+                }
+
+            }
+
 
             g->endDraw();
             std::cout << "updating draw and positions" << std::endl;

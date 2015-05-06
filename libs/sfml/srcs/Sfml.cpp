@@ -91,7 +91,7 @@ void Sfml::drawRect (int x, int y, eColor color)
 {
     sf::RectangleShape rect(sf::Vector2f(10, 10));
 
-    rect.setPosition(x, y);
+    rect.setPosition(x * 10, y * 10);
 
     rect.setFillColor(_colorMap[color]);
 

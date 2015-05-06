@@ -12,7 +12,7 @@ public:
 
     Kasparov (int w, int h);
     std::vector< std::vector<int> > getMap (void) const;
-    std::list<Hiddleston *> getPlayers (void) const;
+    std::list<Hiddleston *> getPlayers (void);
 
     void addPlayer(std::string name, eKeys left, eKeys right, ePos pos);
 

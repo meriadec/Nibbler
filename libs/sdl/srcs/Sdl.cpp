@@ -97,7 +97,7 @@ eKeys Sdl::getInput (void) {
 
 void Sdl::drawRect (int x, int y, eColor color)
 {
-    SDL_Rect rect = { x, y, 10, 10 };
+    SDL_Rect rect = { x * 10, y * 10, 10, 10 };
     SDL_SetRenderDrawColor(_renderer, _colorMap[color][0], _colorMap[color][1], _colorMap[color][2], 255);
     SDL_RenderFillRect(_renderer, &rect);
 };

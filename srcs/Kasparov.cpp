@@ -18,7 +18,7 @@ Kasparov::Kasparov (void) {
 
 }
 
-std::list<Hiddleston *> Kasparov::getPlayers (void) const {
+std::list<Hiddleston *> Kasparov::getPlayers (void) {
     return _players;
 }
 

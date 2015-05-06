@@ -15,12 +15,12 @@ public:
 
     void digest (eKeys code);
 
-    std::string getName (void) const;
-    std::list<std::pair<int, int> > getBlocks (void) const;
+    std::string getName (void);
+    std::list< std::pair<int, int> > getBlocks (void);
 
 private:
 
-    std::list<std::pair<int, int> > _blocks;
+    std::list< std::pair<int, int> > _blocks;
 
     Kasparov * _game;
     std::string _name;
