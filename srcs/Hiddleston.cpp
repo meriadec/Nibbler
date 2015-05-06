@@ -5,7 +5,7 @@ std::list<std::pair<int, int> > Hiddleston::getBlocks (void) {
     return _blocks;
 }
 
-Hiddleston::Hiddleston(std::string name, eKeys left, eKeys right, ePos pos, Kasparov * game) : _name(name), _left(left), _right(right), _game(game) {
+Hiddleston::Hiddleston (std::string name, eKeys left, eKeys right, ePos pos, Kasparov * game) : _name(name), _left(left), _right(right), _game(game) {
     _oneDirection = 1;
 
     if (pos == ePos::TOPLEFT) {
@@ -25,7 +25,7 @@ Hiddleston::Hiddleston(std::string name, eKeys left, eKeys right, ePos pos, Kasp
     }
 }
 
-void Hiddleston::digest(eKeys code) {
+void Hiddleston::digest (eKeys code) {
     if (code == _left) {
         _oneDirection--;
         if (_oneDirection < 0) {
@@ -44,4 +44,15 @@ void Hiddleston::digest(eKeys code) {
 
 std::string Hiddleston::getName (void) {
     return _name;
+}
+
+void Hiddleston::apply (void) {
+    std::pair<int, int> el = _blocks.front();
+
+         if (_oneDirection == 0) { _blocks.push_front(std::make_pair(el.first, el.second - 1)); }
+    else if (_oneDirection == 1) { _blocks.push_front(std::make_pair(el.first + 1, el.second)); }
+    else if (_oneDirection == 2) { _blocks.push_front(std::make_pair(el.first, el.second + 1)); }
+    else if (_oneDirection == 3) { _blocks.push_front(std::make_pair(el.first - 1, el.second)); }
+
+    _blocks.pop_back();
 }

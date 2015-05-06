@@ -14,6 +14,7 @@ public:
     Hiddleston(std::string name, eKeys left, eKeys right, ePos pos, Kasparov * game);
 
     void digest (eKeys code);
+    void apply (void);
 
     std::string getName (void);
     std::list< std::pair<int, int> > getBlocks (void);

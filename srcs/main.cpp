@@ -20,7 +20,7 @@ int main (int ac, char ** av)
     g->start();
 
     eKeys key;
-    int speed = 4;
+    int speed = 12;
     int now = rol.tick();
     std::list<Hiddleston *> players = game.getPlayers();
 
@@ -34,8 +34,9 @@ int main (int ac, char ** av)
             g->clear();
             now = rol.tick();
 
-
             for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
+
+                (*it)->apply();
 
                 std::list< std::pair<int, int> > blocks = (*it)->getBlocks();
                 std::list<std::pair<int, int> >::iterator i = blocks.begin();
@@ -45,7 +46,6 @@ int main (int ac, char ** av)
                 }
 
             }
-
 
             g->endDraw();
             std::cout << "updating draw and positions" << std::endl;
