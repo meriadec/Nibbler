@@ -9,10 +9,10 @@ int main (int ac, char ** av)
     GeorgeRRMartin  got;
     Rolex           rol;
     IGraphic *      g;
-    Kasparov        game;
+    Kasparov        game(100, 100);
 
-    game.addPlayer("pute", eKeys::KEYLEFT1, eKeys::KEYRIGHT1);
-    game.addPlayer("boris", eKeys::KEYLEFT2, eKeys::KEYRIGHT2);
+    game.addPlayer("pute", eKeys::KEYLEFT1, eKeys::KEYRIGHT1, ePos::TOPLEFT);
+    game.addPlayer("boris", eKeys::KEYLEFT2, eKeys::KEYRIGHT2, ePos::BOTRIGHT);
 
     got.setGraphic(av[1]);
     g = got.getGraphic();

@@ -3,4 +3,16 @@
 
 #include <iostream>
 
+enum ePos {
+    TOPLEFT = 1, TOPRIGHT, BOTLEFT, BOTRIGHT
+};
+
+enum eKeys {
+    NOTHING = 1, ESCAPE, KEYLEFT1, KEYRIGHT1, KEYLEFT2, KEYRIGHT2
+};
+
+enum eColor {
+    WHITE = 1, BLACK, RED, BLUE, CYAN, GREEN, ORANGE, YELLOW, VIOLET
+};
+
 #endif

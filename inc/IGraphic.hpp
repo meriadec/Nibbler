@@ -1,15 +1,7 @@
 #ifndef NIBBLER_IGRAPHIC_H
 #define NIBBLER_IGRAPHIC_H
 
-# include "nibbler.hpp"
-
-enum eKeys {
-    NOTHING = 1, ESCAPE, KEYLEFT1, KEYRIGHT1, KEYLEFT2, KEYRIGHT2
-};
-
-enum eColor {
-    WHITE = 1, BLACK, RED, BLUE, CYAN, GREEN, ORANGE, YELLOW, VIOLET
-};
+# include <nibbler.hpp>
 
 class IGraphic {
 
