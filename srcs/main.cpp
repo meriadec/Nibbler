@@ -3,13 +3,13 @@
 #include <Rolex.hpp>
 #include <GeorgeRRMartin.hpp>
 
-int main (void)
+int main (int ac, char ** av)
 {
     GeorgeRRMartin  got;
     Rolex           rol;
     IGraphic *      g;
 
-    got.setGraphic("sfml");
+    got.setGraphic(av[1]);
     g = got.getGraphic();
 
     g->start();
