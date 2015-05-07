@@ -1,11 +1,13 @@
 #include <Hiddleston.hpp>
 #include <Kasparov.hpp>
 
+#include <algorithm>
+
 std::list<std::pair<int, int> > Hiddleston::getBlocks (void) {
     return _blocks;
 }
 
-Hiddleston::Hiddleston (std::string name, eKeys left, eKeys right, ePos pos, Kasparov * game) : _name(name), _left(left), _right(right), _game(game) {
+Hiddleston::Hiddleston (std::string name, eKeys left, eKeys right, ePos pos, Kasparov * game) : _name(name), _left(left), _right(right), _game(game), isDead(false) {
     _oneDirection = 1;
 
     if (pos == ePos::TOPLEFT) {
@@ -41,7 +43,7 @@ std::string Hiddleston::getName (void) {
 }
 
 void Hiddleston::apply (void) {
-    std::pair<int, int> & el = _blocks.front();
+    std::pair<int, int> el = _blocks.front();
 
          if (_oneDirection == 0) { _blocks.push_front(std::make_pair(el.first, el.second - 1)); }
     else if (_oneDirection == 1) { _blocks.push_front(std::make_pair(el.first + 1, el.second)); }
@@ -49,6 +51,24 @@ void Hiddleston::apply (void) {
     else if (_oneDirection == 3) { _blocks.push_front(std::make_pair(el.first - 1, el.second)); }
 
     _uppercut();
+
+    el = _blocks.front();
+
+    // check if dead
+
+    std::list<Hiddleston *> players = this->_game->getPlayers();
+    for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
+        std::list< std::pair<int, int> > blocks = (*it)->getBlocks();
+        std::list< std::pair<int, int> >::iterator i = ((*it) == this) ? std::next(blocks.begin(), 1) : blocks.begin();
+        for (; i != blocks.end(); ++i) {
+            if ((*i) == el) {
+                this->isDead = true;
+                return;
+            }
+        }
+    }
+
+    // check if eat
 
     if (el == this->_game->getLunch()) {
         this->_game->gyneco();

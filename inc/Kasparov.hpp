@@ -31,6 +31,7 @@ private:
     int _h;
     std::vector< std::vector<int> > _map;
     std::list<Hiddleston *>         _players;
+    std::list<Hiddleston *>         _playersToRemove;
 
     std::pair<int, int>             _bigMac;
 

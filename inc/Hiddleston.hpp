@@ -19,6 +19,8 @@ public:
     std::string getName (void);
     std::list< std::pair<int, int> > getBlocks (void);
 
+    bool isDead;
+
 private:
 
     std::list< std::pair<int, int> > _blocks;

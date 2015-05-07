@@ -31,6 +31,7 @@ int main (int ac, char ** av)
     while ((key = g->getInput()) != eKeys::ESCAPE) {
 
         for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
+            if ((*it)->isDead) { continue; }
             (*it)->digest(key);
         }
 
@@ -41,6 +42,8 @@ int main (int ac, char ** av)
             // let's draw players
 
             for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
+
+                if ((*it)->isDead) { continue; }
 
                 (*it)->apply();
 
@@ -57,6 +60,8 @@ int main (int ac, char ** av)
             // let's draw the big mac
 
             g->drawRect(game.getLunch().first, game.getLunch().second, eColor::YELLOW);
+
+            // finish drawing
 
             g->endDraw();
         }
