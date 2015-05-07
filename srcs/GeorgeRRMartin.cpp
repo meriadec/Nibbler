@@ -1,6 +1,6 @@
 #include <GeorgeRRMartin.hpp>
 
-GeorgeRRMartin::GeorgeRRMartin (void) {
+GeorgeRRMartin::GeorgeRRMartin (int w, int h): _w(w), _h(h) {
   _handle = NULL;
 }
 
@@ -24,7 +24,7 @@ void GeorgeRRMartin::setGraphic (std::string lib) {
     throw std::exception();
   }
 
-  _g = graphic(1000, 1000);
+  _g = graphic(_w, _h);
 }
 
 IGraphic *GeorgeRRMartin::getGraphic (void) {

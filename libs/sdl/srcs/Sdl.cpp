@@ -105,7 +105,7 @@ void Sdl::drawRect (int x, int y, eColor color)
 
 extern "C" IGraphic * create (int w, int h)
 {
-    return new Sdl(w, h);
+    return new Sdl(w * 10, h * 10);
 }
 
 extern "C" void destroy (IGraphic * p)

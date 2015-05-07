@@ -20,7 +20,7 @@
 class GeorgeRRMartin {
 
 public:
-  GeorgeRRMartin (void);
+  GeorgeRRMartin (int w, int h);
   ~GeorgeRRMartin (void);
 
   void setGraphic (std::string lib);
@@ -30,6 +30,8 @@ public:
 private:
   void *      _handle;
   IGraphic *  _g;
+    int _w;
+    int _h;
 
 };
 

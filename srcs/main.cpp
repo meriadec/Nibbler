@@ -6,10 +6,12 @@
 
 int main (int ac, char ** av)
 {
-    GeorgeRRMartin  got;
+    // TODO argc argv
+    Kasparov        game(100, 100);
+
+    GeorgeRRMartin  got(game.getW(), game.getH());
     Rolex           rol;
     IGraphic *      g;
-    Kasparov        game(100, 100);
 
     srand(time(0));
 

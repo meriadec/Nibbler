@@ -103,7 +103,7 @@ void Sfml::drawRect (int x, int y, eColor color)
 
 extern "C" IGraphic * create (int w, int h)
 {
-    return new Sfml(w, h);
+    return new Sfml(w * 10, h * 10);
 }
 
 extern "C" void destroy (IGraphic * p)
