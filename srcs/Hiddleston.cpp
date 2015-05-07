@@ -58,6 +58,7 @@ void Hiddleston::apply (void) {
 
     std::list<Hiddleston *> players = this->_game->getPlayers();
     for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
+        if ((*it)->isDead) { continue; }
         std::list< std::pair<int, int> > blocks = (*it)->getBlocks();
         std::list< std::pair<int, int> >::iterator i = ((*it) == this) ? std::next(blocks.begin(), 1) : blocks.begin();
         for (; i != blocks.end(); ++i) {
