@@ -11,8 +11,8 @@ int main (int ac, char ** av)
     IGraphic *      g;
     Kasparov        game(100, 100);
 
-    game.addPlayer("pute", eKeys::KEYLEFT1, eKeys::KEYRIGHT1, ePos::TOPLEFT);
-    game.addPlayer("boris", eKeys::KEYLEFT2, eKeys::KEYRIGHT2, ePos::BOTRIGHT);
+    game.addPlayer("joueur1", eKeys::KEYLEFT1, eKeys::KEYRIGHT1, ePos::TOPLEFT);
+    game.addPlayer("joueur2", eKeys::KEYLEFT2, eKeys::KEYRIGHT2, ePos::BOTRIGHT);
 
     got.setGraphic(av[1]);
     g = got.getGraphic();
@@ -42,13 +42,13 @@ int main (int ac, char ** av)
                 std::list<std::pair<int, int> >::iterator i = blocks.begin();
 
                 for (; i != blocks.end(); ++i) {
-                    g->drawRect((*i).first, (*i).second, eColor::BLUE);
+                    eColor color = (i == blocks.begin()) ? eColor::BLUE: eColor::CYAN;
+                    g->drawRect((*i).first, (*i).second, color);
                 }
 
             }
 
             g->endDraw();
-            std::cout << "updating draw and positions" << std::endl;
         }
 
     }
