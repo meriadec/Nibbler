@@ -24,7 +24,7 @@ int main (int ac, char ** av)
     g->start();
 
     eKeys key;
-    int speed = 12;
+    int speed = 50;
     int now = rol.tick();
 
     game.gyneco();
@@ -62,6 +62,14 @@ int main (int ac, char ** av)
             // let's draw the big mac
 
             g->drawRect(game.getLunch().first, game.getLunch().second, eColor::YELLOW);
+
+            // let's draw the score
+
+            std::string msg;
+            for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
+                msg += (*it)->getName() + ": " + std::to_string((*it)->getBlocks().size() - 2) + "      ";
+            }
+            g->drawUi(msg);
 
             // finish drawing
 

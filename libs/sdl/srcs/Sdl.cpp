@@ -103,6 +103,10 @@ void Sdl::drawRect (int x, int y, eColor color)
     SDL_RenderFillRect(_renderer, &rect);
 };
 
+void Sdl::drawUi (std::string msg) {
+    (void) msg;
+}
+
 extern "C" IGraphic * create (int w, int h)
 {
     return new Sdl(w * 10, h * 10);

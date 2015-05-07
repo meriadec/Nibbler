@@ -25,6 +25,7 @@ class Sdl: public IGraphic {
         eKeys getInput  (void);
 
         void drawRect (int x, int y, eColor color);
+        void drawUi (std::string msg);
 
     private:
 

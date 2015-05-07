@@ -25,6 +25,7 @@ class Sfml: public IGraphic {
         eKeys getInput  (void);
 
         void drawRect (int x, int y, eColor color);
+        void drawUi (std::string msg);
 
     private:
 
@@ -34,6 +35,8 @@ class Sfml: public IGraphic {
 
         std::map<int, eKeys>     _keyMap;
         std::map<eColor, sf::Color> _colorMap;
+
+        sf::Font _font;
 
 };
 

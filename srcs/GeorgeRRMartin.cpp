@@ -24,7 +24,7 @@ void GeorgeRRMartin::setGraphic (std::string lib) {
     throw std::exception();
   }
 
-  _g = graphic(_w, _h);
+  _g = graphic(_w, _h + 3);
 }
 
 IGraphic *GeorgeRRMartin::getGraphic (void) {

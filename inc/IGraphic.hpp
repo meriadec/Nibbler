@@ -2,6 +2,9 @@
 #define NIBBLER_IGRAPHIC_H
 
 # include <nibbler.hpp>
+# include <Hiddleston.hpp>
+
+# include <list>
 
 class IGraphic {
 
@@ -16,6 +19,7 @@ class IGraphic {
         virtual eKeys getInput  (void) = 0;
 
         virtual void drawRect (int x, int y, eColor color) = 0;
+        virtual void drawUi (std::string msg) = 0;
 
         virtual const int & getWidth (void) const = 0;
         virtual const int & getHeight (void) const = 0;

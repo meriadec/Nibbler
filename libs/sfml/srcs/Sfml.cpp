@@ -21,6 +21,8 @@ Sfml::Sfml (int w, int h): _w(w), _h(h)
             { eColor::YELLOW , sf::Color(181, 137, 0) },
             { eColor::VIOLET, sf::Color(108, 113, 196) }
     };
+
+    _font.loadFromFile("../fonts/menlo.ttf");
 }
 
 Sfml::~Sfml (void)
@@ -99,6 +101,24 @@ void Sfml::drawRect (int x, int y, eColor color)
     if (_win->isOpen()) {
         _win->draw(rect);
     }
+}
+
+void Sfml::drawUi (std::string msg) {
+
+    if (!_win->isOpen()) { return; }
+
+    sf::RectangleShape rect(sf::Vector2f(_w, 30));
+    rect.setPosition(0, _h - 30);
+    rect.setFillColor(_colorMap[eColor::VIOLET]);
+    _win->draw(rect);
+
+    sf::Text text(msg, _font);
+    text.setCharacterSize(15);
+    text.setStyle(sf::Text::Bold);
+    text.setColor(_colorMap[eColor::WHITE]);
+    text.setPosition(15, _h - 25);
+
+    _win->draw(text);
 }
 
 extern "C" IGraphic * create (int w, int h)
