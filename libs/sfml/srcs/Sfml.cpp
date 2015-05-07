@@ -3,6 +3,7 @@
 Sfml::Sfml (int w, int h): _w(w), _h(h)
 {
     _keyMap = {
+            { sf::Keyboard::Escape, eKeys::ESCAPE },
             { sf::Keyboard::Left, eKeys::KEYLEFT1 },
             { sf::Keyboard::Right, eKeys::KEYRIGHT1 },
             { sf::Keyboard::A, eKeys::KEYLEFT2 },

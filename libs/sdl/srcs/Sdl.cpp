@@ -3,6 +3,7 @@
 Sdl::Sdl (int w, int h): _w(w), _h(h)
 {
     _keyMap = {
+        { SDLK_ESCAPE, eKeys::ESCAPE },
         { SDLK_LEFT, eKeys::KEYLEFT1 },
         { SDLK_RIGHT, eKeys::KEYRIGHT1 },
         { SDLK_a, eKeys::KEYLEFT2 },
