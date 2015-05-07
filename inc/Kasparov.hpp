@@ -19,6 +19,9 @@ public:
     int getW (void) const;
     int getH (void) const;
 
+    void gyneco (void);
+    std::pair<int, int> & getLunch (void);
+
     Kasparov (void);
     ~Kasparov (void);
 
@@ -28,6 +31,11 @@ private:
     int _h;
     std::vector< std::vector<int> > _map;
     std::list<Hiddleston *>         _players;
+
+    std::pair<int, int>             _bigMac;
+
+    bool _isFree (std::pair<int, int> pos);
+    std::pair<int, int>              _randomPos (void);
 
 };
 

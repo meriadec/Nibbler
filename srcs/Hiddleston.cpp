@@ -28,17 +28,11 @@ Hiddleston::Hiddleston (std::string name, eKeys left, eKeys right, ePos pos, Kas
 void Hiddleston::digest (eKeys code) {
     if (code == _left) {
         _oneDirection--;
-        if (_oneDirection < 0) {
-            _oneDirection = 3;
-        }
-        std::cout << _name << " is moving left." << std::endl;
+        if (_oneDirection < 0) { _oneDirection = 3; }
     }
     else if (code == _right) {
         _oneDirection++;
-        if (_oneDirection > 3) {
-            _oneDirection = 0;
-        }
-        std::cout << _name << " is moving right." << std::endl;
+        if (_oneDirection > 3) { _oneDirection = 0; }
     }
 }
 
@@ -55,7 +49,12 @@ void Hiddleston::apply (void) {
     else if (_oneDirection == 3) { _blocks.push_front(std::make_pair(el.first - 1, el.second)); }
 
     _uppercut();
-    _blocks.pop_back();
+
+    if (el == this->_game->getLunch()) {
+        this->_game->gyneco();
+    } else {
+        _blocks.pop_back();
+    }
 
 }
 
@@ -66,7 +65,7 @@ void Hiddleston::_uppercut (void) {
 
     std::pair<int, int> & el = _blocks.front();
 
-         if (el.first < 0)  { el.first = w; std::cout << "butic" << std::endl;}
+         if (el.first < 0)  { el.first = w;}
     else if (el.first > w)  { el.first = 0; }
     else if (el.second < 0) { el.second = h; }
     else if (el.second > h) { el.second = 0; }

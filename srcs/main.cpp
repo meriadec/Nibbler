@@ -11,6 +11,8 @@ int main (int ac, char ** av)
     IGraphic *      g;
     Kasparov        game(100, 100);
 
+    srand(time(0));
+
     game.addPlayer("joueur1", eKeys::KEYLEFT1, eKeys::KEYRIGHT1, ePos::TOPLEFT);
     game.addPlayer("joueur2", eKeys::KEYLEFT2, eKeys::KEYRIGHT2, ePos::BOTRIGHT);
 
@@ -22,6 +24,8 @@ int main (int ac, char ** av)
     eKeys key;
     int speed = 12;
     int now = rol.tick();
+
+    game.gyneco();
     std::list<Hiddleston *> players = game.getPlayers();
 
     while ((key = g->getInput()) != eKeys::ESCAPE) {
@@ -33,6 +37,8 @@ int main (int ac, char ** av)
         if (rol.tick() - now > 1000 / speed) {
             g->clear();
             now = rol.tick();
+
+            // let's draw players
 
             for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
 
@@ -47,6 +53,10 @@ int main (int ac, char ** av)
                 }
 
             }
+
+            // let's draw the big mac
+
+            g->drawRect(game.getLunch().first, game.getLunch().second, eColor::YELLOW);
 
             g->endDraw();
         }
