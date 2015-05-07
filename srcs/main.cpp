@@ -28,7 +28,7 @@ int main (int ac, char ** av)
     game.gyneco();
     std::list<Hiddleston *> players = game.getPlayers();
 
-    while ((key = g->getInput()) != eKeys::ESCAPE) {
+    while ((key = g->getInput()) != eKeys::ESCAPE && game.hasAlive()) {
 
         for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
             if ((*it)->isDead) { continue; }
@@ -69,6 +69,8 @@ int main (int ac, char ** av)
     }
 
     g->end();
+
+    std::cout << "--- The end ---" << std::endl;
 
     return (0);
 }

@@ -25,6 +25,8 @@ public:
     Kasparov (void);
     ~Kasparov (void);
 
+    bool hasAlive (void);
+
 private:
 
     int _w;

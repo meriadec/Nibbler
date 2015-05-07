@@ -61,3 +61,10 @@ std::pair<int, int> Kasparov::_randomPos (void) {
 std::pair<int, int> &Kasparov::getLunch (void) {
     return this->_bigMac;
 }
+
+bool Kasparov::hasAlive (void) {
+    for (std::list<Hiddleston *>::iterator it = _players.begin(); it != _players.end(); it++) {
+        if (!(*it)->isDead) { return true; }
+    }
+    return false;
+}
