@@ -47,12 +47,28 @@ std::string Hiddleston::getName (void) {
 }
 
 void Hiddleston::apply (void) {
-    std::pair<int, int> el = _blocks.front();
+    std::pair<int, int> & el = _blocks.front();
 
          if (_oneDirection == 0) { _blocks.push_front(std::make_pair(el.first, el.second - 1)); }
     else if (_oneDirection == 1) { _blocks.push_front(std::make_pair(el.first + 1, el.second)); }
     else if (_oneDirection == 2) { _blocks.push_front(std::make_pair(el.first, el.second + 1)); }
     else if (_oneDirection == 3) { _blocks.push_front(std::make_pair(el.first - 1, el.second)); }
 
+    _uppercut();
     _blocks.pop_back();
+
+}
+
+void Hiddleston::_uppercut (void) {
+
+    int h = this->_game->getH() - 1;
+    int w = this->_game->getW() - 1;
+
+    std::pair<int, int> & el = _blocks.front();
+
+         if (el.first < 0)  { el.first = w; std::cout << "butic" << std::endl;}
+    else if (el.first > w)  { el.first = 0; }
+    else if (el.second < 0) { el.second = h; }
+    else if (el.second > h) { el.second = 0; }
+
 }

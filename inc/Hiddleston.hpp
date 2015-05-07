@@ -25,6 +25,7 @@ private:
 
     Kasparov * _game;
     std::string _name;
+    void _uppercut (void);
     eKeys _left;
     eKeys _right;
     int _oneDirection;
