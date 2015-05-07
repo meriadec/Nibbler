@@ -21,6 +21,10 @@ Sdl::Sdl (int w, int h): _w(w), _h(h)
             { eColor::YELLOW , { 181, 137, 0 } },
             { eColor::VIOLET, { 108, 113, 196 } }
     };
+
+    if (TTF_Init() == -1) { throw std::exception(); }
+
+    _font = TTF_OpenFont("../fonts/menlo.ttf", 15);
 }
 
 Sdl::~Sdl (void)
@@ -104,7 +108,24 @@ void Sdl::drawRect (int x, int y, eColor color)
 };
 
 void Sdl::drawUi (std::string msg) {
-    (void) msg;
+
+    eColor color = eColor::VIOLET;
+    SDL_Rect rect = { 0, _h - 30, _w, 30 };
+    SDL_SetRenderDrawColor(_renderer, _colorMap[color][0], _colorMap[color][1], _colorMap[color][2], 255);
+    SDL_RenderFillRect(_renderer, &rect);
+
+    color = eColor::WHITE;
+    SDL_Color c = { static_cast<Uint8 >(_colorMap[color][0]), static_cast<Uint8 >(_colorMap[color][1]), static_cast<Uint8 >(_colorMap[color][2]), 255 };
+    SDL_Surface * surf = TTF_RenderText_Solid(_font, msg.c_str(), c);
+
+    SDL_Texture* Message = SDL_CreateTextureFromSurface(_renderer, surf);
+    SDL_Rect txtRect;
+    txtRect.x = 15;
+    txtRect.y = _h - 25;
+    txtRect.w = surf->clip_rect.w;
+    txtRect.h = surf->clip_rect.h;
+
+    SDL_RenderCopy(_renderer, Message, NULL, &txtRect);
 }
 
 extern "C" IGraphic * create (int w, int h)

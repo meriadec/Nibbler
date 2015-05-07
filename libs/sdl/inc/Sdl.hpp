@@ -3,6 +3,7 @@
 
 # include <IGraphic.hpp>
 # include <SDL2/SDL.h>
+# include <SDL2/SDL_ttf.h>
 # include <map>
 # include <vector>
 
@@ -36,6 +37,8 @@ class Sdl: public IGraphic {
 
         std::map<int, eKeys>                _keyMap;
         std::map<eColor, std::vector<int> > _colorMap;
+
+        TTF_Font *      _font;
 };
 
 #endif
