@@ -1,6 +1,6 @@
 #include "Sdl.hpp"
 
-Sdl::Sdl (int w, int h): _w(w), _h(h)
+Sdl::Sdl(int w, int h): _w(w), _h(h)
 {
     _keyMap = {
         { SDLK_ESCAPE, eKeys::ESCAPE },
@@ -13,15 +13,15 @@ Sdl::Sdl (int w, int h): _w(w), _h(h)
     };
 
     _colorMap = {
-            { eColor::WHITE, { 253, 246, 227 } },
-            { eColor::BLACK, { 0, 43, 54 } },
-            { eColor::RED, { 220, 50, 47 } },
-            { eColor::BLUE, { 38, 139, 210 } },
-            { eColor::CYAN, { 42, 161, 152 } },
-            { eColor::GREEN, { 133, 153, 0 } },
-            { eColor::ORANGE, { 203, 75, 22 } },
-            { eColor::YELLOW , { 181, 137, 0 } },
-            { eColor::VIOLET, { 108, 113, 196 } }
+        { eColor::WHITE, { 253, 246, 227 } },
+        { eColor::BLACK, { 0, 43, 54 } },
+        { eColor::RED, { 220, 50, 47 } },
+        { eColor::BLUE, { 38, 139, 210 } },
+        { eColor::CYAN, { 42, 161, 152 } },
+        { eColor::GREEN, { 133, 153, 0 } },
+        { eColor::ORANGE, { 203, 75, 22 } },
+        { eColor::YELLOW , { 181, 137, 0 } },
+        { eColor::VIOLET, { 108, 113, 196 } }
     };
 
     if (TTF_Init() == -1) { throw std::exception(); }
@@ -29,27 +29,27 @@ Sdl::Sdl (int w, int h): _w(w), _h(h)
     _font = TTF_OpenFont("../fonts/menlo.ttf", 15);
 }
 
-Sdl::~Sdl (void)
+Sdl::~Sdl(void)
 {
 }
 
-Sdl::Sdl (Sdl const & ref)
+Sdl::Sdl(Sdl const & ref)
 {
     *this = ref;
 }
 
-Sdl & Sdl::operator= (Sdl const & ref)
+Sdl &Sdl::operator= (Sdl const & ref)
 {
     static_cast<void>(ref);
     return *this;
 }
 
-const int & Sdl::getHeight (void) const
+const int &Sdl::getHeight (void) const
 {
     return _h;
 }
 
-const int & Sdl::getWidth (void) const
+const int &Sdl::getWidth (void) const
 {
     return _w;
 }

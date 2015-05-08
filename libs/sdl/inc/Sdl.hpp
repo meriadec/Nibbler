@@ -7,13 +7,13 @@
 # include <map>
 # include <vector>
 
-class Sdl: public IGraphic {
+class Sdl : public IGraphic {
 
     public:
 
-        Sdl (int w, int h);
-        ~Sdl (void);
-        Sdl (Sdl const & ref);
+        Sdl(int w, int h);
+        ~Sdl(void);
+        Sdl(Sdl const & ref);
         Sdl & operator= (Sdl const & ref);
 
         const int & getWidth (void) const;

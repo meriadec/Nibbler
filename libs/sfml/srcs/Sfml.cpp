@@ -13,15 +13,15 @@ Sfml::Sfml (int w, int h): _w(w), _h(h)
     };
 
     _colorMap = {
-            { eColor::WHITE, sf::Color(253, 246, 227) },
-            { eColor::BLACK, sf::Color(0, 43, 54) },
-            { eColor::RED, sf::Color(220, 50, 47) },
-            { eColor::BLUE, sf::Color(38, 139, 210) },
-            { eColor::CYAN, sf::Color(42, 161, 152) },
-            { eColor::GREEN, sf::Color(133, 153, 0) },
-            { eColor::ORANGE, sf::Color(203, 75, 22) },
-            { eColor::YELLOW , sf::Color(181, 137, 0) },
-            { eColor::VIOLET, sf::Color(108, 113, 196) }
+        { eColor::WHITE, sf::Color(253, 246, 227) },
+        { eColor::BLACK, sf::Color(0, 43, 54) },
+        { eColor::RED, sf::Color(220, 50, 47) },
+        { eColor::BLUE, sf::Color(38, 139, 210) },
+        { eColor::CYAN, sf::Color(42, 161, 152) },
+        { eColor::GREEN, sf::Color(133, 153, 0) },
+        { eColor::ORANGE, sf::Color(203, 75, 22) },
+        { eColor::YELLOW , sf::Color(181, 137, 0) },
+        { eColor::VIOLET, sf::Color(108, 113, 196) }
     };
 
     _font.loadFromFile("../fonts/menlo.ttf");
