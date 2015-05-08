@@ -14,8 +14,20 @@ static void switchGraphic (std::string lib, IGraphic ** g, GeorgeRRMartin & got)
 
 int main (int ac, char ** av)
 {
-    // TODO argc argv
-    Kasparov        game(100, 100);
+    if (ac != 3) {
+        std::cerr << "You should launch this program like: ./nibbler <width> <height>" << std::endl;
+        return (42);
+    }
+
+    int w = std::atoi(av[1]);
+    int h = std::atoi(av[2]);
+
+    if (w < 50 || w > 100 || h < 50 || h > 100) {
+        std::cerr << "Sorry bro, but your hacking skills are not efficient in this program." << std::endl;
+        return (666);
+    }
+
+    Kasparov        game(w, h);
 
     GeorgeRRMartin  got(game.getW(), game.getH());
     Rolex           rol;
