@@ -7,11 +7,14 @@ GeorgeRRMartin::GeorgeRRMartin (int w, int h): _w(w), _h(h) {
 GeorgeRRMartin::~GeorgeRRMartin (void) {
 }
 
-void GeorgeRRMartin::setGraphic (std::string lib) {
+bool GeorgeRRMartin::setGraphic(std::string lib) {
+
+  if (_current == lib) { return false; }
 
   IGraphic *(*graphic)(int, int);
 
   if (_handle) {
+    _g->end();
     dlclose(_handle);
     _handle = NULL;
   }
@@ -25,6 +28,8 @@ void GeorgeRRMartin::setGraphic (std::string lib) {
   }
 
   _g = graphic(_w, _h + 3);
+  _current = lib;
+  return true;
 }
 
 IGraphic *GeorgeRRMartin::getGraphic (void) {

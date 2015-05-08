@@ -7,7 +7,9 @@ Sdl::Sdl (int w, int h): _w(w), _h(h)
         { SDLK_LEFT, eKeys::KEYLEFT1 },
         { SDLK_RIGHT, eKeys::KEYRIGHT1 },
         { SDLK_a, eKeys::KEYLEFT2 },
-        { SDLK_o, eKeys::KEYRIGHT2 }
+        { SDLK_e, eKeys::KEYRIGHT2 },
+        { 38, eKeys::ONE },
+        { 91, eKeys::TWO }
     };
 
     _colorMap = {

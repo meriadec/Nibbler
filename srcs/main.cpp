@@ -4,6 +4,14 @@
 #include <GeorgeRRMartin.hpp>
 #include <Kasparov.hpp>
 
+static void switchGraphic (std::string lib, IGraphic ** g, GeorgeRRMartin & got)
+{
+    if (got.setGraphic(lib)) {
+        *g = got.getGraphic();
+        (*g)->start();
+    }
+}
+
 int main (int ac, char ** av)
 {
     // TODO argc argv
@@ -18,7 +26,7 @@ int main (int ac, char ** av)
     game.addPlayer("joueur1", eKeys::KEYLEFT1, eKeys::KEYRIGHT1, ePos::TOPLEFT);
     game.addPlayer("joueur2", eKeys::KEYLEFT2, eKeys::KEYRIGHT2, ePos::BOTRIGHT);
 
-    got.setGraphic(av[1]);
+    got.setGraphic("sfml");
     g = got.getGraphic();
 
     g->start();
@@ -31,6 +39,9 @@ int main (int ac, char ** av)
     std::list<Hiddleston *> players = game.getPlayers();
 
     while ((key = g->getInput()) != eKeys::ESCAPE && game.hasAlive()) {
+
+        if (key == eKeys::ONE) { switchGraphic("sfml", &g, got); }
+        if (key == eKeys::TWO) { switchGraphic("sdl", &g, got); }
 
         for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
             if ((*it)->isDead) { continue; }
