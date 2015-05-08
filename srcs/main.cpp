@@ -14,15 +14,16 @@ static void switchGraphic (std::string lib, IGraphic ** g, GeorgeRRMartin & got)
 
 int main (int ac, char ** av)
 {
-    if (ac != 3) {
-        std::cerr << "You should launch this program like: ./nibbler <width> <height>" << std::endl;
+    if (ac < 3 || ac > 5) {
+        std::cerr << "You should launch this program like: ./nibbler <width> <height> [players]" << std::endl;
         return (42);
     }
 
     int w = std::atoi(av[1]);
     int h = std::atoi(av[2]);
+    int nbPlayers = ac == 4 ? std::atoi(av[3]) : 1;
 
-    if (w < 50 || w > 100 || h < 50 || h > 100) {
+    if (w < 50 || w > 100 || h < 50 || h > 100 || nbPlayers < 1 || nbPlayers > 2) {
         std::cerr << "Sorry bro, but your hacking skills are not efficient in this program." << std::endl;
         return (666);
     }
@@ -35,8 +36,8 @@ int main (int ac, char ** av)
 
     srand(time(0));
 
-    game.addPlayer("joueur1", eKeys::KEYLEFT1, eKeys::KEYRIGHT1, ePos::TOPLEFT);
-    game.addPlayer("joueur2", eKeys::KEYLEFT2, eKeys::KEYRIGHT2, ePos::BOTRIGHT);
+    game.addPlayer("wormtongue", eKeys::KEYLEFT1, eKeys::KEYRIGHT1, ePos::TOPLEFT);
+    if (nbPlayers > 1) { game.addPlayer("gollum", eKeys::KEYLEFT2, eKeys::KEYRIGHT2, ePos::BOTRIGHT); }
 
     got.setGraphic("sfml");
     g = got.getGraphic();
