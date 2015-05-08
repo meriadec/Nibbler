@@ -45,7 +45,7 @@ int main (int ac, char ** av)
     g->start();
 
     eKeys key;
-    int speed = 50;
+    int speed = 30;
     int now = rol.tick();
 
     game.gyneco();
