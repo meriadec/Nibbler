@@ -78,7 +78,7 @@ int main (int ac, char ** av)
 
             std::string msg;
             for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
-                msg += (*it)->getName() + ": " + std::to_string((*it)->getBlocks().size() - 2) + "      ";
+                msg += (*it)->getName() + ": " + std::to_string((*it)->getBlocks().size() - 4) + "      ";
             }
             g->drawUi(msg);
 

@@ -1,8 +1,6 @@
 #include <Hiddleston.hpp>
 #include <Kasparov.hpp>
 
-#include <algorithm>
-
 std::list<std::pair<int, int> > Hiddleston::getBlocks (void) {
     return _blocks;
 }
@@ -11,17 +9,25 @@ Hiddleston::Hiddleston (std::string name, eKeys left, eKeys right, ePos pos, Kas
     _oneDirection = 1;
 
     if (pos == ePos::TOPLEFT) {
+        _blocks.push_back(std::make_pair(3, 0));
+        _blocks.push_back(std::make_pair(2, 0));
         _blocks.push_back(std::make_pair(1, 0));
         _blocks.push_back(std::make_pair(0, 0));
     } else if (pos == ePos::TOPRIGHT) {
+        _blocks.push_back(std::make_pair(this->_game->getW() - 4, 0));
+        _blocks.push_back(std::make_pair(this->_game->getW() - 3, 0));
         _blocks.push_back(std::make_pair(this->_game->getW() - 2, 0));
         _blocks.push_back(std::make_pair(this->_game->getW() - 1, 0));
         _oneDirection = 3;
     } else if (pos == ePos::BOTRIGHT) {
+        _blocks.push_back(std::make_pair(this->_game->getW() - 4, this->_game->getH() - 1));
+        _blocks.push_back(std::make_pair(this->_game->getW() - 3, this->_game->getH() - 1));
         _blocks.push_back(std::make_pair(this->_game->getW() - 2, this->_game->getH() - 1));
         _blocks.push_back(std::make_pair(this->_game->getW() - 1, this->_game->getH() - 1));
         _oneDirection = 3;
     } else if (pos == ePos::BOTLEFT) {
+        _blocks.push_back(std::make_pair(3, this->_game->getH() - 1));
+        _blocks.push_back(std::make_pair(2, this->_game->getH() - 1));
         _blocks.push_back(std::make_pair(1, this->_game->getH() - 1));
         _blocks.push_back(std::make_pair(0, this->_game->getH() - 1));
     }
