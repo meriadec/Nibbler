@@ -4,8 +4,8 @@ std::vector<std::vector<int> > Kasparov::getMap(void) const {
     return _map;
 }
 
-void Kasparov::addPlayer(std::string name, eKeys left, eKeys right, ePos pos) {
-    _players.push_back(new Hiddleston(name, left, right, pos, this));
+void Kasparov::addPlayer (std::string name, eKeys left, eKeys right, ePos pos, eColor color) {
+    _players.push_back(new Hiddleston(name, left, right, pos, this, color));
 }
 
 Kasparov::~Kasparov (void) {

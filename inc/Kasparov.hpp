@@ -14,7 +14,7 @@ public:
     std::vector< std::vector<int> > getMap (void) const;
     std::list<Hiddleston *> getPlayers (void);
 
-    void addPlayer(std::string name, eKeys left, eKeys right, ePos pos);
+    void addPlayer (std::string name, eKeys left, eKeys right, ePos pos, eColor color);
 
     int getW (void) const;
     int getH (void) const;

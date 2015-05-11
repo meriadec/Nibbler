@@ -11,7 +11,7 @@ class Hiddleston {
 
 public:
 
-    Hiddleston(std::string name, eKeys left, eKeys right, ePos pos, Kasparov * game);
+    Hiddleston (std::string name, eKeys left, eKeys right, ePos pos, Kasparov *game, eColor color);
 
     void digest (eKeys code);
     void apply (void);
@@ -20,6 +20,8 @@ public:
     std::list< std::pair<int, int> > getBlocks (void);
 
     bool isDead;
+
+    eColor getColor (void) const;
 
 private:
 
@@ -31,6 +33,7 @@ private:
     eKeys _left;
     eKeys _right;
     int _oneDirection;
+    eColor _color;
 
 };
 

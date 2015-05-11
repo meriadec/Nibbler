@@ -36,8 +36,8 @@ int main (int ac, char ** av)
 
     srand(time(0));
 
-    game.addPlayer("wormtongue", eKeys::KEYLEFT1, eKeys::KEYRIGHT1, ePos::TOPLEFT);
-    if (nbPlayers > 1) { game.addPlayer("gollum", eKeys::KEYLEFT2, eKeys::KEYRIGHT2, ePos::BOTRIGHT); }
+    if (nbPlayers > 0) { game.addPlayer("wormtongue", eKeys::KEYLEFT1, eKeys::KEYRIGHT1, ePos::TOPLEFT, eColor::BLUE); }
+    if (nbPlayers > 1) { game.addPlayer("gollum", eKeys::KEYLEFT2, eKeys::KEYRIGHT2, ePos::BOTRIGHT, eColor::RED); }
 
     got.setGraphic("sfml");
     g = got.getGraphic();
@@ -77,7 +77,7 @@ int main (int ac, char ** av)
                 std::list<std::pair<int, int> >::iterator i = blocks.begin();
 
                 for (; i != blocks.end(); ++i) {
-                    eColor color = (i == blocks.begin()) ? eColor::BLUE: eColor::CYAN;
+                    eColor color = (i == blocks.begin()) ? eColor::WHITE : (*it)->getColor();
                     g->drawRect((*i).first, (*i).second, color);
                 }
 

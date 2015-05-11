@@ -5,7 +5,7 @@ std::list<std::pair<int, int> > Hiddleston::getBlocks (void) {
     return _blocks;
 }
 
-Hiddleston::Hiddleston (std::string name, eKeys left, eKeys right, ePos pos, Kasparov * game) : _name(name), _left(left), _right(right), _game(game), isDead(false) {
+Hiddleston::Hiddleston (std::string name, eKeys left, eKeys right, ePos pos, Kasparov *game, eColor color) : _name(name), _left(left), _right(right), _game(game), isDead(false), _color(color) {
     _oneDirection = 1;
 
     if (pos == ePos::TOPLEFT) {
@@ -97,4 +97,8 @@ void Hiddleston::_uppercut (void) {
     else if (el.second < 0) { el.second = h; }
     else if (el.second > h) { el.second = 0; }
 
+}
+
+eColor Hiddleston::getColor (void) const {
+    return _color;
 }
