@@ -17,6 +17,7 @@ include_directories(inc)
 
 add_subdirectory(libs/sdl)
 add_subdirectory(libs/sfml)
+add_subdirectory(libs/ncurses)
 
 add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES})
 target_link_libraries(${EXECUTABLE_NAME} ${CMAKE_DL_LIBS})

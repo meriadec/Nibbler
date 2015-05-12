@@ -39,7 +39,7 @@ int main (int ac, char ** av)
     if (nbPlayers > 0) { game.addPlayer("wormtongue", eKeys::KEYLEFT1, eKeys::KEYRIGHT1, ePos::TOPLEFT, eColor::BLUE); }
     if (nbPlayers > 1) { game.addPlayer("gollum", eKeys::KEYLEFT2, eKeys::KEYRIGHT2, ePos::BOTRIGHT, eColor::RED); }
 
-    got.setGraphic("sfml");
+    got.setGraphic("ncurses");
     g = got.getGraphic();
 
     g->start();
