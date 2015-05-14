@@ -85,7 +85,8 @@ eKeys Ncurses::getInput (void) {
 void Ncurses::drawRect (int x, int y, eColor color) {
     int c = COLOR_PAIR(_colorMap[color]);
     wattrset(_win, c);
-    mvwaddch(_win, y, x, ' ');
+    mvwaddch(_win, y, x * 2, ' ');
+    mvwaddch(_win, y, x * 2 + 1, ' ');
     wattroff(_win, c);
 }
 
@@ -116,7 +117,7 @@ const int & Ncurses::getHeight (void) const {
 }
 
 extern "C" IGraphic * create (int w, int h) {
-    return new Ncurses(w, h);
+    return new Ncurses(w * 2, h);
 }
 
 extern "C" void destroy (IGraphic * p) {
