@@ -57,7 +57,11 @@ bool Kasparov::_isFree (std::pair<int, int> pos) {
 std::pair<int, int> Kasparov::_randomPos (void) {
     int maxH = this->isPinte ? this->_h - 1 : this->_h;
     int maxW = this->isPinte ? this->_w - 1 : this->_w;
-    return std::make_pair(rand() % maxW, rand() % maxH);
+    int x = rand() % maxW;
+    int y = rand() % maxH;
+    if (this->isPinte && x == 0) { x = 1; }
+    if (this->isPinte && y == 0) { y = 1; }
+    return std::make_pair(x, y);
 }
 
 std::pair<int, int> &Kasparov::getLunch (void) {
