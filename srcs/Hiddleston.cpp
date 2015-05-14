@@ -9,27 +9,27 @@ Hiddleston::Hiddleston (std::string name, eKeys left, eKeys right, ePos pos, Kas
     _oneDirection = 1;
 
     if (pos == ePos::TOPLEFT) {
-        _blocks.push_back(std::make_pair(3, 0));
-        _blocks.push_back(std::make_pair(2, 0));
-        _blocks.push_back(std::make_pair(1, 0));
-        _blocks.push_back(std::make_pair(0, 0));
+        _blocks.push_back(std::make_pair(4, 1));
+        _blocks.push_back(std::make_pair(3, 1));
+        _blocks.push_back(std::make_pair(2, 1));
+        _blocks.push_back(std::make_pair(1, 1));
     } else if (pos == ePos::TOPRIGHT) {
-        _blocks.push_back(std::make_pair(this->_game->getW() - 4, 0));
-        _blocks.push_back(std::make_pair(this->_game->getW() - 3, 0));
-        _blocks.push_back(std::make_pair(this->_game->getW() - 2, 0));
-        _blocks.push_back(std::make_pair(this->_game->getW() - 1, 0));
+        _blocks.push_back(std::make_pair(this->_game->getW() - 5, 1));
+        _blocks.push_back(std::make_pair(this->_game->getW() - 4, 1));
+        _blocks.push_back(std::make_pair(this->_game->getW() - 3, 1));
+        _blocks.push_back(std::make_pair(this->_game->getW() - 2, 1));
         _oneDirection = 3;
     } else if (pos == ePos::BOTRIGHT) {
-        _blocks.push_back(std::make_pair(this->_game->getW() - 4, this->_game->getH() - 1));
-        _blocks.push_back(std::make_pair(this->_game->getW() - 3, this->_game->getH() - 1));
-        _blocks.push_back(std::make_pair(this->_game->getW() - 2, this->_game->getH() - 1));
-        _blocks.push_back(std::make_pair(this->_game->getW() - 1, this->_game->getH() - 1));
+        _blocks.push_back(std::make_pair(this->_game->getW() - 5, this->_game->getH() - 2));
+        _blocks.push_back(std::make_pair(this->_game->getW() - 4, this->_game->getH() - 2));
+        _blocks.push_back(std::make_pair(this->_game->getW() - 3, this->_game->getH() - 2));
+        _blocks.push_back(std::make_pair(this->_game->getW() - 2, this->_game->getH() - 2));
         _oneDirection = 3;
     } else if (pos == ePos::BOTLEFT) {
-        _blocks.push_back(std::make_pair(3, this->_game->getH() - 1));
-        _blocks.push_back(std::make_pair(2, this->_game->getH() - 1));
-        _blocks.push_back(std::make_pair(1, this->_game->getH() - 1));
-        _blocks.push_back(std::make_pair(0, this->_game->getH() - 1));
+        _blocks.push_back(std::make_pair(4, this->_game->getH() - 2));
+        _blocks.push_back(std::make_pair(3, this->_game->getH() - 2));
+        _blocks.push_back(std::make_pair(2, this->_game->getH() - 2));
+        _blocks.push_back(std::make_pair(1, this->_game->getH() - 2));
     }
 }
 
@@ -61,6 +61,13 @@ void Hiddleston::apply (void) {
     el = _blocks.front();
 
     // check if dead
+
+    if (this->_game->isPinte) {
+        if (el.first == 0 || el.first == this->_game->getW() - 1 || el.second == 0 || el.second == this->_game->getH() - 1) {
+            this->isDead = true;
+            return;
+        }
+    }
 
     std::list<Hiddleston *> players = this->_game->getPlayers();
     for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {

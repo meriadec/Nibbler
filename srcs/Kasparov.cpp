@@ -22,7 +22,7 @@ std::list<Hiddleston *> Kasparov::getPlayers (void) {
     return _players;
 }
 
-Kasparov::Kasparov(int w, int h): _w(w), _h(h) {
+Kasparov::Kasparov (int w, int h, bool isPinte) : _w(w), _h(h), isPinte(isPinte) {
 }
 
 int Kasparov::getH (void) const {
@@ -55,7 +55,9 @@ bool Kasparov::_isFree (std::pair<int, int> pos) {
 }
 
 std::pair<int, int> Kasparov::_randomPos (void) {
-    return std::make_pair(rand() % this->_w, rand() % this->_h);
+    int maxH = this->isPinte ? this->_h - 1 : this->_h;
+    int maxW = this->isPinte ? this->_w - 1 : this->_w;
+    return std::make_pair(rand() % maxW, rand() % maxH);
 }
 
 std::pair<int, int> &Kasparov::getLunch (void) {

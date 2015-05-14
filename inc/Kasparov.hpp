@@ -10,7 +10,7 @@ class Kasparov {
 
 public:
 
-    Kasparov (int w, int h);
+    Kasparov (int w, int h, bool isPinte);
     std::vector< std::vector<int> > getMap (void) const;
     std::list<Hiddleston *> getPlayers (void);
 
@@ -26,6 +26,7 @@ public:
     ~Kasparov (void);
 
     bool hasAlive (void);
+    bool isPinte;
 
 private:
 

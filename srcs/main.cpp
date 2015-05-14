@@ -3,6 +3,7 @@
 #include <Rolex.hpp>
 #include <GeorgeRRMartin.hpp>
 #include <Kasparov.hpp>
+#include <string.h>
 
 static void switchGraphic (std::string lib, IGraphic ** g, GeorgeRRMartin & got)
 {
@@ -15,20 +16,29 @@ static void switchGraphic (std::string lib, IGraphic ** g, GeorgeRRMartin & got)
 int main (int ac, char ** av)
 {
     if (ac < 3 || ac > 5) {
-        std::cerr << "You should launch this program like: ./nibbler <width> <height> [players]" << std::endl;
+        std::cerr << "You should launch this program like: ./nibbler <width> <height> [players] [finite]" << std::endl;
         return (42);
     }
 
     int w = std::atoi(av[1]);
     int h = std::atoi(av[2]);
-    int nbPlayers = ac == 4 ? std::atoi(av[3]) : 1;
+    bool isFinite = false;
+    int nbPlayers = ac >= 4 ? std::atoi(av[3]) : 1;
 
     if (w < 50 || w > 100 || h < 50 || h > 100 || nbPlayers < 1 || nbPlayers > 2) {
         std::cerr << "Sorry bro, but your hacking skills are not efficient in this program." << std::endl;
         return (666);
     }
 
-    Kasparov        game(w, h);
+    if (ac == 5) {
+        if (strcmp(av[4], "finite")) {
+            std::cerr << "You must specify 'finite' for 4th parameter, nice try Mr Anderson." << std::endl;
+            return (1337);
+        }
+        isFinite = true;
+    }
+
+    Kasparov game(w, h, isFinite);
 
     GeorgeRRMartin  got(game.getW(), game.getH());
     Rolex           rol;
@@ -65,6 +75,15 @@ int main (int ac, char ** av)
         if (rol.tick() - now > 1000 / speed) {
             g->clear();
             now = rol.tick();
+
+            // let's draw the contours
+
+            if (isFinite) {
+                for (int i = 0; i < w; i++) { g->drawRect(i, 0, eColor::WHITE); }
+                for (int i = 0; i < w; i++) { g->drawRect(i, h - 1, eColor::WHITE); }
+                for (int i = 0; i < h; i++) { g->drawRect(0, i, eColor::WHITE); }
+                for (int i = 0; i < h; i++) { g->drawRect(w - 1, i, eColor::WHITE); }
+            }
 
             // let's draw players
 
