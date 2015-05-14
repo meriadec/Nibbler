@@ -31,6 +31,23 @@ void Ncurses::start (void) {
     keypad(stdscr, 1);
     wmove(this->_win, 0, 0);
     curs_set(0);
+
+    _colorMap = {
+        { eColor::WHITE, 1 },
+        { eColor::BLACK, 2 },
+        { eColor::RED, 3 },
+        { eColor::BLUE, 4 },
+        { eColor::CYAN, 5 },
+        { eColor::GREEN, 1 },
+        { eColor::ORANGE, 1 },
+        { eColor::YELLOW, 1 },
+        { eColor::VIOLET, 1 }
+    };
+
+    _keyMap = {
+        KEY_RIGHT, eKeys::KEYRIGHT1,
+        KEY_LEFT, eKeys::KEYLEFT1
+    };
 }
 
 void Ncurses::end (void) {
@@ -48,31 +65,37 @@ void Ncurses::endDraw (void) {
 }
 
 eKeys Ncurses::getInput (void) {
+    int ch;
+    if ((ch = getch()) != ERR) {
+        if (_keyMap.find(ch) != _keyMap.end()) {
+            return _keyMap[ch];
+        } else {
+            return eKeys::NOTHING;
+        }
+    }
     return eKeys::NOTHING;
 }
 
 void Ncurses::drawRect (int x, int y, eColor color) {
-
+    mvwaddch(_win, y, x, 'x' | _colorMap[color]);
 }
 
 void Ncurses::drawUi (std::string msg) {
 
 }
 
-const int &Ncurses::getWidth (void) const {
+const int & Ncurses::getWidth (void) const {
     return _w;
 }
 
-const int &Ncurses::getHeight (void) const {
+const int & Ncurses::getHeight (void) const {
     return _h;
 }
 
-extern "C" IGraphic * create (int w, int h)
-{
-    return new Ncurses(w * 10, h * 10);
+extern "C" IGraphic * create (int w, int h) {
+    return new Ncurses(w, h);
 }
 
-extern "C" void destroy (IGraphic * p)
-{
+extern "C" void destroy (IGraphic * p) {
     delete p;
 }

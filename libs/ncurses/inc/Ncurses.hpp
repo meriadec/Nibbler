@@ -3,6 +3,7 @@
 
 # include <IGraphic.hpp>
 # include <ncurses.h>
+# include <map>
 
 class Ncurses : public IGraphic {
 
@@ -28,6 +29,9 @@ class Ncurses : public IGraphic {
     int _w;
     int _h;
     WINDOW *  _win;
+
+    std::map<eColor, int> _colorMap;
+    std::map<int, eKeys> _keyMap;
 
 };
 
