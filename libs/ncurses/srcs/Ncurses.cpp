@@ -49,11 +49,11 @@ void Ncurses::start (void) {
     _keyMap = {
         { KEY_RIGHT, eKeys::KEYRIGHT1 },
         { KEY_LEFT, eKeys::KEYLEFT1 },
-        { 101, eKeys::KEYRIGHT2 },
+        { 100, eKeys::KEYRIGHT2 },
         { 97, eKeys::KEYLEFT2 },
         { 27, eKeys::ESCAPE },
-        { 38, eKeys::ONE },
-        { 91, eKeys::TWO }
+        { 49, eKeys::ONE },
+        { 50, eKeys::TWO }
     };
 }
 

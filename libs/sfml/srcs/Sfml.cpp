@@ -7,7 +7,7 @@ Sfml::Sfml (int w, int h): _w(w), _h(h)
             { sf::Keyboard::Left, eKeys::KEYLEFT1 },
             { sf::Keyboard::Right, eKeys::KEYRIGHT1 },
             { sf::Keyboard::A, eKeys::KEYLEFT2 },
-            { sf::Keyboard::E, eKeys::KEYRIGHT2 },
+            { sf::Keyboard::D, eKeys::KEYRIGHT2 },
             { sf::Keyboard::Num2, eKeys::TWO },
             { sf::Keyboard::Num3, eKeys::THREE }
     };
