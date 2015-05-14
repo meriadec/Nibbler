@@ -55,8 +55,11 @@ int main (int ac, char ** av)
     g->start();
 
     eKeys key;
-    int speed = 30;
+    int speed = 10;
     int now = rol.tick();
+
+    Rolex speedRoll;
+    int speedNow = speedRoll.tick();
 
     game.gyneco();
     std::list<Hiddleston *> players = game.getPlayers();
@@ -118,6 +121,11 @@ int main (int ac, char ** av)
             // finish drawing
 
             g->endDraw();
+        }
+
+        if (speedRoll.tick() - speedNow > 5e3) {
+            speedNow = speedRoll.tick();
+            speed += 5;
         }
 
     }
