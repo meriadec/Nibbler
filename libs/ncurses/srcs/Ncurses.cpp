@@ -15,16 +15,18 @@ void Ncurses::start (void) {
         endwin();
         throw std::exception();
     }
-    getmaxyx(stdscr, _h, _w);
 
     _win = newwin(_h, _w, 0, 0);
+    getmaxyx(_win, _h, _w);
 
     start_color();
-    init_pair(1, COLOR_RED, COLOR_BLACK);
-    init_pair(2, COLOR_GREEN, COLOR_GREEN);
-    init_pair(3, COLOR_BLUE, COLOR_BLACK);
+    init_pair(1, COLOR_WHITE, COLOR_WHITE);
+    init_pair(2, COLOR_WHITE, COLOR_GREEN);
+    init_pair(3, COLOR_WHITE, COLOR_RED);
     init_pair(4, COLOR_WHITE, COLOR_BLUE);
-    init_pair(5, COLOR_RED, COLOR_BLACK);
+    init_pair(5, COLOR_WHITE, COLOR_BLACK);
+    init_pair(6, COLOR_WHITE, COLOR_YELLOW);
+    init_pair(7, COLOR_WHITE, COLOR_MAGENTA);
 
     noecho();
     nodelay(stdscr, 1);
@@ -40,8 +42,8 @@ void Ncurses::start (void) {
         { eColor::CYAN, 5 },
         { eColor::GREEN, 1 },
         { eColor::ORANGE, 1 },
-        { eColor::YELLOW, 1 },
-        { eColor::VIOLET, 1 }
+        { eColor::YELLOW, 6 },
+        { eColor::VIOLET, 7 }
     };
 
     _keyMap = {
@@ -81,11 +83,28 @@ eKeys Ncurses::getInput (void) {
 }
 
 void Ncurses::drawRect (int x, int y, eColor color) {
-    mvwaddch(_win, y, x, 'x' | _colorMap[color]);
+    int c = COLOR_PAIR(_colorMap[color]);
+    wattrset(_win, c);
+    mvwaddch(_win, y, x, ' ');
+    wattroff(_win, c);
 }
 
 void Ncurses::drawUi (std::string msg) {
-
+    int c = COLOR_PAIR(_colorMap[eColor::VIOLET]);
+    std::string pad;
+    for (int i = 0; i < _w; i++) {
+        pad += " ";
+    }
+    std::string full;
+    for (int i = 0; i < _w; i++) {
+        full += " ";
+    }
+    std::string out = " " + msg + pad;
+    wattrset(_win, c);
+    mvwaddstr(_win, _h - 3, 0, full.c_str());
+    mvwaddstr(_win, _h - 2, 0, out.c_str());
+    mvwaddstr(_win, _h - 1, 0, full.c_str());
+    wattroff(_win, c);
 }
 
 const int & Ncurses::getWidth (void) const {
