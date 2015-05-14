@@ -116,6 +116,7 @@ int main (int ac, char ** av)
             for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
                 msg += (*it)->getName() + ": " + std::to_string((*it)->getBlocks().size() - 4) + "      ";
             }
+            msg += "speed: " + std::to_string(speed);
             g->drawUi(msg);
 
             // finish drawing
