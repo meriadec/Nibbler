@@ -9,7 +9,7 @@ Sdl::Sdl(int w, int h): _w(w), _h(h)
         { SDLK_a, eKeys::KEYLEFT2 },
         { SDLK_e, eKeys::KEYRIGHT2 },
         { 38, eKeys::ONE },
-        { 91, eKeys::TWO }
+        { 123, eKeys::THREE }
     };
 
     _colorMap = {

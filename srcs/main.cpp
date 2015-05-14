@@ -55,6 +55,7 @@ int main (int ac, char ** av)
 
         if (key == eKeys::ONE) { switchGraphic("sfml", &g, got); }
         if (key == eKeys::TWO) { switchGraphic("sdl", &g, got); }
+        if (key == eKeys::THREE) { switchGraphic("ncurses", &g, got); }
 
         for (std::list<Hiddleston *>::iterator it = players.begin(); it != players.end(); ++it) {
             if ((*it)->isDead) { continue; }

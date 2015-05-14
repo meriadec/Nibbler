@@ -45,14 +45,18 @@ void Ncurses::start (void) {
     };
 
     _keyMap = {
-        KEY_RIGHT, eKeys::KEYRIGHT1,
-        KEY_LEFT, eKeys::KEYLEFT1
+        { KEY_RIGHT, eKeys::KEYRIGHT1 },
+        { KEY_LEFT, eKeys::KEYLEFT1 },
+        { 111, eKeys::KEYRIGHT2 },
+        { 97, eKeys::KEYLEFT2 },
+        { 27, eKeys::ESCAPE },
+        { 38, eKeys::ONE },
+        { 91, eKeys::TWO }
     };
 }
 
 void Ncurses::end (void) {
     delwin(_win);
-    delwin(stdscr);
     endwin();
 }
 
