@@ -5,7 +5,6 @@ Rolex::Rolex (void) {
 }
 
 Rolex::~Rolex (void) {
-  std::cout << "destructing rolex. Sorry Mr. Dray" << std::endl;
 }
 
 int Rolex::tick (void) {
